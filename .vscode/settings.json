@@ -89,9 +89,8 @@
       "previewLimit": 50,
       "server": "localhost",
       "driver": "PostgreSQL",
-      "name": "neon",
-      "group": "neon",
-      "connectString": "postgresql://battle-stadium_owner:cT6yIbumDLa5@ep-curly-butterfly-a5r8zyf9.us-east-2.aws.neon.tech/battle-stadium?sslmode=require"
+      "name": "neon2",
+      "group": "neon"
     }
   ]
 }
