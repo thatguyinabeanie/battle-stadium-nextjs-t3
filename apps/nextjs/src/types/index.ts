@@ -24,6 +24,6 @@ export interface DashboardLayoutProps extends ChildrenProps {
 export interface OrganizationTournamentProps {
   params: Promise<{
     org_slug: string;
-    tournament_id: bigint;
+    tournament_id: number;
   }>;
 }

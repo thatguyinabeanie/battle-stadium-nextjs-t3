@@ -6,11 +6,11 @@ import ProfilesAutocomplete from "./profiles-autocomplete";
 
 interface RegistrationCardProps {
   org_slug: string;
-  tournament_id: bigint;
+  tournament_id: number;
   profiles: Profile[];
 }
 
-export default function RegistrationCard({
+export default function RegistrationCard ({
   profiles,
   org_slug,
   tournament_id,
@@ -36,14 +36,14 @@ export default function RegistrationCard({
   return (
     <div className="border-small m-20 inline-block max-w-fit justify-center rounded-3xl border-neutral-500/40 bg-transparent p-10 text-center backdrop-blur">
       <div>
-        Register for {org_slug} tournament {tournament_id}
+        Register for { org_slug } tournament { tournament_id }
       </div>
 
       <div>
-        <form action={registerForTournament} className="grid grid-cols-1 gap-4">
+        <form action={ registerForTournament } className="grid grid-cols-1 gap-4">
           <Input type="text" placeholder="In Game Name" name="ign" />
 
-          <ProfilesAutocomplete profiles={profiles} />
+          <ProfilesAutocomplete profiles={ profiles } />
 
           <div className="flex items-center space-x-2">
             <Checkbox id="country_flag" name="country_flag" />

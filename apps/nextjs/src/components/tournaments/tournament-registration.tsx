@@ -6,10 +6,10 @@ import RegistrationCard from "./registration-card";
 
 interface TournamentRegisterProps {
   org_slug: string;
-  tournament_id: bigint;
+  tournament_id: number;
 }
 
-export default async function fTournamentRegistration({
+export default async function fTournamentRegistration ({
   org_slug,
   tournament_id,
 }: Readonly<TournamentRegisterProps>) {
@@ -23,9 +23,9 @@ export default async function fTournamentRegistration({
 
   return (
     <RegistrationCard
-      org_slug={org_slug}
-      profiles={profiles}
-      tournament_id={tournament_id}
+      org_slug={ org_slug }
+      profiles={ profiles }
+      tournament_id={ tournament_id }
     />
   );
 }

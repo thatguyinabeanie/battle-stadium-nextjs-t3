@@ -8,7 +8,7 @@ import {
   tournaments,
 } from "@battle-stadium/db/schema";
 
-export async function getTournament(tournament_id: bigint) {
+export async function getTournament (tournament_id: number) {
   const result = await db
     .select()
     .from(tournaments)
@@ -18,13 +18,13 @@ export async function getTournament(tournament_id: bigint) {
 
   return result.length > 0 && result[0]
     ? {
-        tournament: result[0].tournaments,
-        organization: result[0].organizations,
-      }
+      tournament: result[0].tournaments,
+      organization: result[0].organizations,
+    }
     : null;
 }
 
-export async function getTournaments(page = 1, pageSize = 20) {
+export async function getTournaments (page = 1, pageSize = 20) {
   return await db.query.tournaments.findMany({
     orderBy: (tournaments, { desc }) => desc(tournaments.startAt),
     limit: pageSize,
@@ -33,14 +33,14 @@ export async function getTournaments(page = 1, pageSize = 20) {
 }
 
 interface TournamentRegistration {
-  tournamentId: bigint;
+  tournamentId: number;
   inGameName: string;
-  profileId: bigint;
-  pokemonTeamId?: bigint;
+  profileId: number;
+  pokemonTeamId?: number;
   showCountryFlag: boolean;
 }
 
-export async function postTournamentRegistration(
+export async function postTournamentRegistration (
   registration: TournamentRegistration,
 ) {
   return await db
@@ -53,7 +53,7 @@ export async function postTournamentRegistration(
     .returning();
 }
 
-export async function getTournamentPlayers(tournament_id: bigint) {
+export async function getTournamentPlayers (tournament_id: number) {
   return await db
     .select()
     .from(players)

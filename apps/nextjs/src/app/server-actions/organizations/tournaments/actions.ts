@@ -3,21 +3,21 @@
 import { and, db, desc, eq } from "@battle-stadium/db";
 import { organizations, tournaments } from "@battle-stadium/db/schema";
 
-function tournamentsLeftJoinOrganizations() {
+function tournamentsLeftJoinOrganizations () {
   return db
     .select()
     .from(tournaments)
     .leftJoin(organizations, eq(tournaments.organizationId, organizations.id));
 }
 
-export async function getOrganizationTournaments(page = 1, pageSize = 20) {
+export async function getOrganizationTournaments (page = 1, pageSize = 20) {
   return await tournamentsLeftJoinOrganizations()
     .orderBy(desc(tournaments.startAt))
     .limit(pageSize)
     .offset((page - 1) * pageSize);
 }
 
-export async function getSingleOrganizationTournaments(
+export async function getSingleOrganizationTournaments (
   slug: string,
   page = 1,
   pageSize = 20,
@@ -34,9 +34,9 @@ export async function getSingleOrganizationTournaments(
   };
 }
 
-export async function getSingleOrganizationSingleTournament(
+export async function getSingleOrganizationSingleTournament (
   slug: string,
-  tournamentId: bigint,
+  tournamentId: number,
 ) {
   const results = await tournamentsLeftJoinOrganizations()
     .where(and(eq(organizations.slug, slug), eq(tournaments.id, tournamentId)))
